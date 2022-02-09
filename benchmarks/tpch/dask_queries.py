@@ -599,7 +599,7 @@ def q11(partsupp, supplier, nation):
     ps_supp_merge = partsupp_filtered.merge(
         supplier_filtered, left_on="PS_SUPPKEY", right_on="S_SUPPKEY", how="inner"
     )
-    ps_supp_merge.loc[:, ["PS_PARTKEY", "S_NATIONKEY", "TOTAL_COST"]]
+    ps_supp_merge = ps_supp_merge.loc[:, ["PS_PARTKEY", "S_NATIONKEY", "TOTAL_COST"]]
     nation_filtered = nation[(nation["N_NAME"] == "GERMANY")]
     nation_filtered = nation_filtered.loc[:, ["N_NATIONKEY"]]
     ps_supp_n_merge = ps_supp_merge.merge(
