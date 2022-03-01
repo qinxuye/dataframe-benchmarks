@@ -71,7 +71,6 @@ def load_partsupp(data_folder):
 def q01(lineitem):
     t1 = time.time()
     date = pd.Timestamp("1998-09-02")
-    print(list(lineitem.columns.values))
     lineitem_filtered = lineitem.loc[
         :,
         [
@@ -97,7 +96,6 @@ def q01(lineitem):
         * (1 - lineitem_filtered.L_DISCOUNT)
         * (1 + lineitem_filtered.L_TAX)
     )
-    # ray needs double square bracket
     gb = lineitem_filtered.groupby(["L_RETURNFLAG", "L_LINESTATUS"], as_index=False)[
         [
             "L_ORDERKEY",
